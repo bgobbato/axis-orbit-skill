@@ -69,6 +69,16 @@ Never red, never orange/yellow, no gradients, no shadows on charts.
 
 Fixed geometric set in `scripts/visuals.py` (`ICONS`): elongation, flatness, volume, axis, surface, score, patient, clock, chart-up, chart-down, check, zero, rom-arc, navigation, repair. 32×32 grid, stroke 2, round caps, `currentColor`, no fill. If none fits, add one new icon that follows the same rules and list it in the final report so a designer can review it. Never draw anatomy, never use image models, never use stock art.
 
+## Where each visual appears
+
+| Visual | Page (SVG) | Video scene | Deck slide |
+|---|---|---|---|
+| `zones` | yes | yes | shapes to scale (see `deck.md`) |
+| `bars` | yes, also dark sidebar card | yes, with callouts | native column chart + callouts |
+| `hbars` | yes | yes, dark, with punch | native bar chart + change column + punch |
+| `vs` | yes | yes | native column chart |
+| `steps` | yes | yes | native column chart + callout |
+
 ## Video overrides
 
 `video.scenes` lists visual ids. `video.overrides.<id>` replaces fields for the video only (shorter titles, `foot` with the source table, `callouts` for `bars`: `[{"row": 13, "text": "{rate_13rf}", "sub": "with 13 or more"}]`, `punch` for `hbars`: `{"pre": "Up to", "value": "{x}", "post": "lower odds"}`, `theme: "light"` for a light `hbars` scene).

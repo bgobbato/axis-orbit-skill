@@ -105,6 +105,15 @@ def main():
     today = datetime.date.today().strftime("%B %-d, %Y")
     svg_list = "".join(f"<code>{p.name}</code>" for p in sorted((out / "svg").glob("*.svg")))
     wide_preview = svgs.get((R.get("cards") or {}).get("wide_visual", ""), "")
+    deck_tile = ""
+    if (out / "page" / "deck-preview.jpg").exists():
+        n_slides = len(list((out / "deck" / "preview").glob("slide-*.jpg")))
+        deck_tile = f"""
+    <div class="tile">
+      <img src="deck-preview.jpg" alt="Thumbnails of the PowerPoint slides" loading="lazy">
+      <h4>PowerPoint deck · {n_slides} slides</h4>
+      <p>Same design system, native charts you can edit, and entrance animations that build each slide. File: <code>out/deck/{escape(R['slug'])}.pptx</code>.</p>
+    </div>"""
 
     css = (SKILL / "templates" / "page.css").read_text()
     page = f"""<title>{escape(R.get('page_name', R['title']))}</title>
@@ -186,7 +195,7 @@ def main():
       <h4>Standalone SVGs</h4>
       <p>Each visual is also exported as its own SVG for slides and posters.</p>
       <div class="svgs">{svg_list}</div>
-    </div>
+    </div>{deck_tile}
   </div>
 
   <div class="evidence">

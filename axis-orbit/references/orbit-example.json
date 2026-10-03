@@ -700,5 +700,56 @@
   "rate_overall",
   "high_or",
   "mod_range_high"
- ]
+ ],
+ "deck": {
+  "animation": "auto",
+  "slides": [
+   {
+    "type": "title"
+   },
+   {
+    "type": "question"
+   },
+   {
+    "type": "population",
+    "title": "Who was studied",
+    "icons": [
+     "patient",
+     "volume",
+     "chart-up"
+    ]
+   },
+   {
+    "type": "figure",
+    "eyebrow": "Methods",
+    "title": "The seven radiomic risk factors"
+   },
+   {
+    "type": "visual",
+    "visual": "accumulation",
+    "eyebrow": "Results"
+   },
+   {
+    "type": "visual",
+    "visual": "threshold",
+    "eyebrow": "Results"
+   },
+   {
+    "type": "visual",
+    "visual": "modifiable"
+   },
+   {
+    "type": "findings",
+    "title": "Key findings"
+   },
+   {
+    "type": "context",
+    "title": "What this means for surgeons"
+   },
+   {
+    "type": "reference",
+    "title": "Read the full study"
+   }
+  ]
+ }
 }

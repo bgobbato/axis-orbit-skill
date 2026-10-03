@@ -1,11 +1,21 @@
 ---
 name: axis-orbit
-description: Turn a scientific paper or manuscript (PDF or DOCX) from the Advita Axis shoulder research group into an Axis ORbits draft — summary page (Study Question, The Story, Key Findings, Clinical Context, Limitations, Reference), on-brand SVG visuals, share cards and a short silent animated video, with every number locked to a verbatim quote — then publish it as a private artifact for review. Use when the user gives a paper and asks for an ORbit, an Axis summary, the "página, mídias e vídeo", or runs /axis-orbit.
+description: Turn a scientific paper or manuscript (PDF or DOCX) from the Advita Axis shoulder research group into an Axis ORbits draft — summary page (Study Question, The Story, Key Findings, Clinical Context, Limitations, Reference), on-brand SVG visuals, share cards, a short silent animated video and an animated PowerPoint deck in the same design system, with every number locked to a verbatim quote — then publish it as a private artifact for review. Use when the user gives a paper and asks for an ORbit, an Axis summary, the "página, mídias e vídeo", a presentation/PowerPoint/slides of a paper in the Axis style, or runs /axis-orbit.
 ---
 
 # Axis ORbit
 
-Input: one paper (`.pdf` or `.docx`). Output: a draft ORbit in `articles/<slug>/out/page/` plus a private artifact link. All output text is in **English**, even when the user writes in Portuguese. Talk to the user in their language.
+Input: one paper (`.pdf` or `.docx`). Output, all from one `orbit.json`:
+
+| Product | Where | Built by |
+|---|---|---|
+| ORbit page + media kit + evidence table | `out/page/index.html` | `build_page.py` |
+| Standalone SVGs | `out/svg/` | `build_page.py` |
+| Share cards | `out/page/share-*.png` | `render_cards.py` |
+| Animated video (16:9, 1:1) | `out/page/orbit-video-*.mp4` | `render_video.py` |
+| PowerPoint deck with native charts and animations | `out/deck/<slug>.pptx` | `deck_data.py` → `build_deck.js` → `finish_deck.py` (see `references/deck.md`) |
+
+If the user asks only for the page or only for the presentation, still write and validate `orbit.json` first, then build just that product (`run_all.py --no-deck`, or the four deck scripts alone). All output text is in **English**, even when the user writes in Portuguese. Talk to the user in their language.
 
 Paths below are relative to this skill folder (`.claude/skills/axis-orbit/`). Article folders live in the project at `articles/<slug>/`.
 
@@ -21,7 +31,7 @@ python3 .claude/skills/axis-orbit/scripts/extract.py "<paper path>" articles/<sl
 
 ### 2. Write `articles/<slug>/orbit.json`
 
-Read first: `references/orbit-example.json` (full working example), `references/writing-guide.md`, `references/visual-library.md`.
+Read first: `references/orbit-example.json` (full working example), `references/writing-guide.md`, `references/visual-library.md`, and `references/deck.md` when a deck is wanted.
 
 Order matters:
 1. **`metrics` first.** For every number you will show anywhere, add `{"id", "value", "kind", "section", "quote"}`. `quote` is copied character for character from `source.md` and contains `value`. `section` is the paper section, table, or `p. N` for PDFs. Never compute a number. If the paper prints a change (for example `-58.8%`), make it its own metric.
@@ -29,6 +39,7 @@ Order matters:
 3. **`content`** with `{metric_id}` placeholders for every result number. Cut-offs that define the study go in `definitions`.
 4. **Visuals** by the decision rule in `references/visual-library.md`; `sidebar` (2–4 cards); optional `figure` (a real paper figure from `media/`) and `icon_list`.
 5. **`video`** (question lines, population scene, 2–3 visual scenes, overrides) and **`cards`** (wide link preview, square single number).
+6. **`deck`** (optional slide list and `animation`: `auto` or `click`). Without it the deck uses a default sequence; see `references/deck.md`.
 
 ### 3. Validate (hard gate)
 
@@ -45,7 +56,9 @@ python3 .claude/skills/axis-orbit/scripts/run_all.py articles/<slug> --no-video
 python3 .claude/skills/axis-orbit/scripts/render_video.py articles/<slug> --sample
 ```
 
-Look at: a full-page screenshot of `out/page/index.html` (Playwright, 1280 wide), `out/page/share-*.png`, and `out/video/sheet-16x9.png` and `sheet-1x1.png`. Check against the anti-slop list in `references/visual-library.md`: overlaps, clipped text, numbers that do not match, scales that do not start at zero. Fix `orbit.json` (or a script, if it is a real bug) and rebuild once.
+First time in a project, install the Node packages once: `npm install --prefix .claude/skills/axis-orbit`.
+
+Look at: a full-page screenshot of `out/page/index.html` (Playwright, 1280 wide), `out/page/share-*.png`, `out/video/sheet-16x9.png` and `sheet-1x1.png`, and `out/deck/preview.jpg` (every slide). Check against the anti-slop list in `references/visual-library.md`: overlaps, clipped text, numbers that do not match, scales that do not start at zero. Fix `orbit.json` (or a script, if it is a real bug) and rebuild once.
 
 ### 5. Render the video
 
@@ -69,14 +82,15 @@ Publish `articles/<slug>/out/page/index.html` with the Artifact tool, icon `char
  "orbit-video-1x1.mp4": "articles/<slug>/out/page/orbit-video-1x1.mp4",
  "share-1200x630.png": "articles/<slug>/out/page/share-1200x630.png",
  "share-1080.png": "articles/<slug>/out/page/share-1080.png",
- "video-poster.jpg": "articles/<slug>/out/page/video-poster.jpg"}
+ "video-poster.jpg": "articles/<slug>/out/page/video-poster.jpg",
+ "deck-preview.jpg": "articles/<slug>/out/page/deck-preview.jpg"}
 ```
 
-Leave out `figure.jpg` when there is no figure. On a later change, publish the same file path again to keep the URL.
+Leave out `figure.jpg` when there is no figure and `deck-preview.jpg` when no deck was built. On a later change, publish the same file path again to keep the URL.
 
 ### 8. Report
 
-Tell the user: the link; what is on the page; that all N numbers passed the evidence check; the main items in `review-notes.md`; any new icon you added; and that the link is private until they share it. Ask them to review before anything goes to Advita's site.
+Send the deck with SendUserFile (`out/deck/<slug>.pptx`). Tell the user: the link; the deck path and that its animations play in PowerPoint (not in previews); what is on the page; that all N numbers passed the evidence check; the main items in `review-notes.md`; any new icon you added; and that the link is private until they share it. Ask them to review before anything goes to Advita's site.
 
 ## Rules
 

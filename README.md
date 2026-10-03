@@ -1,6 +1,6 @@
 # axis-orbit
 
-A [Claude Code](https://claude.com/claude-code) skill that turns a scientific paper (PDF or DOCX) into an **Axis ORbits** draft: a short summary page in the Advita Axis format, on-brand SVG charts, share cards and a silent animated video of the key results.
+A [Claude Code](https://claude.com/claude-code) skill that turns a scientific paper (PDF or DOCX) into an **Axis ORbits** draft: a short summary page in the Advita Axis format, on-brand SVG charts, share cards, a silent animated video of the key results, and an animated PowerPoint deck in the same design system.
 
 Every number shown is locked to a verbatim quote from the paper. A validator fails the build if a quote is missing from the paper, a value is missing from its quote, or a result number is typed into the text by hand.
 
@@ -16,9 +16,12 @@ For one paper, in `articles/<slug>/out/`:
 | `svg/*.svg` | Standalone charts and icons for slides and posters |
 | `page/share-1200x630.png`, `share-1080.png` | Link preview and square single-number card |
 | `page/orbit-video-16x9.mp4`, `-1x1.mp4` | ~30 s silent animation, 30 fps, rendered frame by frame |
+| `deck/<slug>.pptx` | 10-slide PowerPoint: brand layouts, native editable charts, geometric icons, speaker notes, fade transitions and entrance animations (auto or on click) |
 | `review-notes.md` | Inconsistencies found in the paper while locking numbers |
 
 ![Video scenes](docs/video-scenes.png)
+
+![PowerPoint deck](docs/deck.jpg)
 
 ## How it works
 
@@ -33,6 +36,7 @@ orbit.json  (written by Claude)  metrics[] with verbatim quotes, content with {m
 scripts/build_page.py   → page + SVGs
 scripts/render_cards.py → share cards (Playwright screenshots)
 scripts/render_video.py → deterministic renderAt(t) in HTML, captured frame by frame, encoded with ffmpeg
+scripts/deck_data.py → build_deck.js (pptxgenjs) → finish_deck.py (theme, transitions, <p:timing> animations)
 ```
 
 Design choices:
@@ -47,10 +51,11 @@ Visual types: `zones` (score tiers), `bars` (rate across ordered groups), `hbars
 
 ## Install
 
-Requirements: Python 3.9+, ffmpeg, Chromium for Playwright.
+Requirements: Python 3.9+, ffmpeg, Chromium for Playwright, Node 18+ (deck). LibreOffice is optional (deck preview).
 
 ```bash
 pip install -r requirements.txt
+npm install --prefix axis-orbit
 python3 -m playwright install chromium
 brew install ffmpeg   # or your platform's package manager
 ```
@@ -87,8 +92,11 @@ axis-orbit/
 │   ├── orbit-example.json       complete worked example
 │   ├── visual-library.md        visual types, schema, decision rule, anti-slop checklist
 │   ├── writing-guide.md         section lengths, voice, number rules
+│   ├── deck.md                  PowerPoint: slide types, deck spec, animations, extending
 │   └── design-tokens.json       colors, type, layout from the Axis pages
-├── scripts/                     extract, validate, build_page, render_cards, render_video, run_all
+├── package.json                 Node deps for the deck (pptxgenjs, sharp)
+├── scripts/                     extract, validate, build_page, render_cards, render_video,
+│                                deck_data, build_deck.js, finish_deck, preview_deck, run_all
 └── templates/                   page.css, page.js, video.html
 ```
 
