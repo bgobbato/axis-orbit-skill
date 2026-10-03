@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Axis ORbit video</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+<style>
+/* One stage, scenes built from data. Sizes in vmin so one file renders 1920x1080 and 1080x1080. */
+:root {
+  --healthygreen:#39B54A; --freshgreen:#8DC63F; --trustturquoise:#00A79D; --seafoam:#74C7A7;
+  --strengthblue:#003C4C; --faded:#545a66; --border:#e1e5e8; --white:#fff; --pad:8vmin;
+}
+* { box-sizing:border-box; margin:0 }
+html, body { width:100%; height:100%; overflow:hidden; background:var(--white); font-family:"Open Sans", Arial, sans-serif; color:var(--strengthblue) }
+.scene { position:absolute; inset:0; padding:var(--pad); display:flex; flex-direction:column; justify-content:center; opacity:0 }
+.dark { background:var(--strengthblue); color:var(--white) }
+.light { background:var(--white) }
+.mark { position:absolute; top:5vmin; left:var(--pad); display:flex; align-items:center; gap:1.2vmin; font-size:3.6vmin }
+.mark .a { font-weight:700; letter-spacing:-.02em }
+.mark .o { background:var(--strengthblue); color:var(--white); font-weight:600; font-style:italic; font-size:2.4vmin; padding:.3vmin 1.8vmin; border-radius:99px }
+.dark .mark .o { background:var(--white); color:var(--strengthblue) }
+.eyebrow { font-size:2.4vmin; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--healthygreen); margin-bottom:2.4vmin }
+.dark .eyebrow { color:var(--freshgreen) }
+.h { font-size:5.6vmin; font-weight:600; line-height:1.15; letter-spacing:-.02em; max-width:150vmin }
+.qline { display:block }
+.badges { display:flex; gap:1.4vmin; margin-top:4vmin; flex-wrap:wrap }
+.badge { background:var(--healthygreen); color:var(--strengthblue); font-size:1.8vmin; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:1vmin 2.2vmin; border-radius:99px }
+.foot { position:absolute; left:var(--pad); right:var(--pad); bottom:4.5vmin; font-size:1.8vmin; color:var(--faded) }
+.dark .foot { color:rgba(255,255,255,.6) }
+.title { font-size:4.6vmin; font-weight:700; letter-spacing:-.01em; margin-bottom:1vmin }
+.sub { font-size:2.3vmin; color:var(--faded); margin-bottom:4vmin }
+.dark .sub { color:rgba(255,255,255,.7) }
+
+/* population */
+.big { font-size:17vmin; font-weight:700; line-height:1; color:var(--freshgreen); font-variant-numeric:tabular-nums; letter-spacing:-.02em }
+.cap { font-size:3.2vmin; font-weight:600; margin-top:1.2vmin }
+.row2 { display:flex; gap:10vmin; margin-top:6vmin; flex-wrap:wrap }
+.mid { font-size:9vmin; font-weight:700; line-height:1; font-variant-numeric:tabular-nums }
+.cap2 { font-size:2.4vmin; margin-top:1vmin; max-width:44vmin; line-height:1.35; opacity:.9 }
+
+/* bars */
+.chartC { position:relative; height:46vmin; margin-left:6vmin; border-bottom:.3vmin solid var(--strengthblue) }
+.gridline { position:absolute; left:0; right:0; border-top:.15vmin solid var(--border) }
+.gl { position:absolute; left:-6vmin; width:5vmin; text-align:right; font-size:1.8vmin; color:var(--faded); transform:translateY(50%) }
+.bars { position:absolute; inset:0; display:flex; align-items:flex-end; gap:1.2%; padding:0 1% }
+.bar { flex:1; background:var(--seafoam); border-radius:.4vmin .4vmin 0 0; transform-origin:bottom; position:relative }
+.bar.hot { background:var(--freshgreen) }
+.xl { position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:1vmin; font-size:1.9vmin; color:var(--faded) }
+.callout { position:absolute; font-size:2.6vmin; font-weight:700; white-space:nowrap }
+.callout small { display:block; font-size:1.9vmin; font-weight:400; color:var(--faded) }
+
+/* zones */
+.zones { display:flex; height:40vmin; align-items:stretch; margin-top:1vmin }
+.zone { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; position:relative }
+.zname { position:absolute; top:0; font-size:2.2vmin; font-weight:700; letter-spacing:.1em; text-transform:uppercase }
+.zbar { width:12vmin; border-radius:.5vmin .5vmin 0 0; transform-origin:bottom }
+.zrate { font-size:5vmin; font-weight:700; margin-bottom:1vmin; font-variant-numeric:tabular-nums }
+.band { display:flex; height:2.4vmin; transform-origin:left }
+.ticks { position:relative; height:4vmin }
+.tick { position:absolute; top:.6vmin; font-size:2vmin; font-weight:600; transform:translateX(-50%) }
+.zstats { display:flex; margin-top:1vmin }
+.zstat { text-align:center; font-size:2.4vmin; font-weight:600 }
+.zstat span { display:block; font-size:2vmin; font-weight:400; color:var(--faded) }
+
+/* hbars */
+.rows { display:grid; gap:2.2vmin; margin-top:2vmin }
+.mrow { display:grid; grid-template-columns:40vmin 1fr; align-items:center; gap:2vmin }
+.mlab { font-size:2.5vmin; font-weight:600; line-height:1.25 }
+.mtrack { position:relative; height:4.4vmin }
+.mbar { position:absolute; left:0; top:0; bottom:0; border-radius:.4vmin; transform-origin:left }
+.mval { position:absolute; top:50%; transform:translateY(-50%); font-size:2.8vmin; font-weight:700; white-space:nowrap }
+.mval em { font-style:normal; color:var(--seafoam); font-size:2.3vmin; margin-left:1.4vmin }
+.light .mval em { color:var(--trustturquoise) }
+.punch { margin-top:4.5vmin; font-size:4.4vmin; font-weight:700 }
+.punch b { color:var(--freshgreen) }
+.light .punch b { color:var(--healthygreen) }
+
+/* vs and steps */
+.cols { display:flex; justify-content:center; align-items:flex-end; gap:8vmin; height:44vmin; border-bottom:.3vmin solid var(--strengthblue) }
+.col { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; position:relative; flex:0 0 22vmin }
+.cval { font-size:6vmin; font-weight:700; margin-bottom:1vmin; font-variant-numeric:tabular-nums }
+.cbar { width:16vmin; border-radius:.5vmin .5vmin 0 0; transform-origin:bottom }
+.clab { position:absolute; top:100%; margin-top:1.6vmin; font-size:2.3vmin; font-weight:700; text-align:center; line-height:1.25; width:30vmin }
+.vsword { align-self:center; font-size:3vmin; font-weight:700; color:var(--faded) }
+.scallout { position:absolute; right:var(--pad); top:16vmin; text-align:right }
+.scallout .v { font-size:9vmin; font-weight:700; color:var(--trustturquoise); line-height:1 }
+.scallout .c { font-size:2.2vmin; color:var(--faded); max-width:40vmin }
+
+/* citation */
+.ctitle { font-size:3.6vmin; font-weight:600; line-height:1.25; max-width:140vmin }
+.cauth { font-size:2.2vmin; color:var(--faded); margin-top:2.4vmin; max-width:140vmin; line-height:1.45 }
+.cnote { margin-top:4vmin; display:inline-block; font-size:2vmin; font-weight:700; color:var(--strengthblue); background:#f2f3f5; border-radius:99px; padding:1vmin 2.4vmin }
+
+@media (max-aspect-ratio: 5/4) {
+  :root { --pad:7vmin }
+  .h { font-size:6vmin }
+  .qline { display:inline }
+  .mrow { grid-template-columns:34vmin 1fr }
+  .zbar { width:10vmin }
+  .scallout { position:static; text-align:left; margin-bottom:3vmin }
+}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const D = /*DATA*/null;
+const stage = document.getElementById('stage');
+const A = [], S = [];
+const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
+const q = (r, s) => r.querySelector(s), qa = (r, s) => [...r.querySelectorAll(s)];
+const anim = (el, start, dur, type) => el && A.push([el, start, dur, type]);
+const mark = `<div class="mark"><span class="a">Axis</span><span class="o">ORbits</span></div>`;
+const num = (s) => parseFloat(String(s).replace(/−/g, '-').replace(/,/g, '').match(/-?[\d.]+/)?.[0] ?? '0');
+const split = (s) => { const m = String(s).match(/^([−\-+]?[\d,]*\.?\d+)(.*)$/); return m ? [m[1], m[2]] : [s, '']; };
+const count = (s) => { const [n, u] = split(s); return `<span class="count" data-final="${n}">0</span>${u}`; };
+const cv = (c) => `var(--${c})`;
+let T = 0;
+const scene = (html, dur) => { const el = h(html); stage.appendChild(el); S.push([el, T, T + dur]); const t0 = T; T += dur; return [el, t0]; };
+
+const B = {
+  title(s) {
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="eyebrow">Study question</div>
+      <div class="h">${s.lines.map(l => `<span class="qline">${l}</span>`).join(' ')}</div>
+      <div class="badges">${s.tags.map(x => `<span class="badge">${x}</span>`).join('')}</div>
+      <div class="foot">${s.foot || ''}</div></section>`, 4.6);
+    anim(q(el, '.eyebrow'), t + .2, .4, 'up');
+    qa(el, '.qline').forEach((l, i) => anim(l, t + .45 + i * .22, .4, 'up'));
+    anim(q(el, '.badges'), t + 1.5, .4, 'up'); anim(q(el, '.foot'), t + 1.7, .4, 'fade');
+  },
+  population(s) {
+    const [el, t] = scene(`<section class="scene dark">${mark}
+      <div class="eyebrow">${s.eyebrow}</div>
+      <div class="big">${count(s.big.value)}</div>
+      <div class="cap">${s.big.caption}</div>
+      <div class="row2">${s.small.map(x => `<div class="sm"><div class="mid" style="color:${x.accent ? cv('freshgreen') : 'inherit'}">${count(x.value)}</div><div class="cap2">${x.caption}</div></div>`).join('')}</div></section>`, 5.0);
+    anim(q(el, '.eyebrow'), t + .2, .4, 'up');
+    anim(q(el, '.big'), t + .3, .4, 'fade'); anim(q(el, '.big .count'), t + .3, 2, 'count');
+    anim(q(el, '.cap'), t + .6, .4, 'up');
+    qa(el, '.sm').forEach((x, i) => { anim(x, t + 1.4 + i * .8, .4, 'up'); anim(q(x, '.count'), t + 1.4 + i * .8, 2, 'count'); });
+  },
+  bars(s) {
+    const n = s.rows.length, ymax = s.y_max;
+    const callouts = (s.callouts || []).map(c => {
+      const v = num(s.rows[c.row].value) / ymax * 100, x = (c.row + .5) / n * 100;
+      const pos = v > 60 ? `right:${100 - x + 4}%;bottom:${v - 12}%;text-align:right` : `left:${x}%;bottom:${v + 5}%`;
+      return `<div class="callout" style="${pos}">${c.text}<small>${c.sub || ''}</small></div>`;
+    }).join('');
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="title">${s.title}</div><div class="sub">${s.subtitle || ''}</div>
+      <div class="chartC">
+        ${(s.grid || []).map(g => `<div class="gridline" style="bottom:${g / ymax * 100}%"></div><div class="gl" style="bottom:${g / ymax * 100}%">${g}${s.unit}</div>`).join('')}
+        <div class="bars">${s.rows.map((r, i) => `<div class="bar ${i >= (s.highlight_from ?? n) ? 'hot' : ''}" style="height:${Math.max(num(r.value) / ymax * 100, .6)}%"><span class="xl">${r.label}</span></div>`).join('')}</div>
+        ${callouts}
+      </div>
+      <div class="foot" style="text-align:center">${s.foot || ''}</div></section>`, 5.6);
+    anim(q(el, '.title'), t + .2, .4, 'up'); anim(q(el, '.sub'), t + .4, .4, 'fade'); anim(q(el, '.foot'), t + .7, .4, 'fade');
+    qa(el, '.bar').forEach((b, i) => anim(b, t + .7 + i * (1.6 / n), .7, 'growY'));
+    qa(el, '.callout').forEach((c, i) => anim(c, t + 2.8 + i * .5, .4, 'up'));
+  },
+  zones(s) {
+    const [d0, d1] = s.domain || [0, 1], w = (z) => z.to - z.from, pos = (v) => (v - d0) / (d1 - d0) * 100;
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="title">${s.title}</div><div class="sub">${s.subtitle || ''}</div>
+      <div class="zones">${s.zones.map(z => `<div class="zone" style="flex:${w(z)}"><div class="zname" style="color:${cv(z.color)}">${z.label}</div>
+        <div class="zrate">${count(z.value)}</div>
+        <div class="zbar" style="background:${cv(z.color)};height:${Math.max(num(z.value) / s.scale_max * 26, .6)}vmin"></div></div>`).join('')}</div>
+      <div class="band">${s.zones.map(z => `<div style="flex:${w(z)};background:${cv(z.color)}"></div>`).join('')}</div>
+      <div class="ticks">${(s.ticks || []).map(x => `<span class="tick" style="left:${pos(x)}%">${x === 1 ? '1.0' : x}</span>`).join('')}</div>
+      <div class="zstats">${s.zones.map(z => `<div class="zstat" style="flex:${w(z)}">${z.stats?.[0] ? `<b style="font-weight:700;color:${z.accent ? cv('trustturquoise') : 'inherit'}">${z.stats[0]}</b>` : ''}<span>${z.stats?.[1] || ''}</span></div>`).join('')}</div>
+      <div class="foot" style="text-align:center">${s.foot || ''}</div></section>`, 3.0 + 1.1 * s.zones.length + .3);
+    anim(q(el, '.title'), t + .2, .4, 'up'); anim(q(el, '.sub'), t + .4, .4, 'fade');
+    anim(q(el, '.band'), t + .6, .8, 'growX'); anim(q(el, '.ticks'), t + 1.1, .4, 'fade'); anim(q(el, '.foot'), t + 1.1, .4, 'fade');
+    const zs = qa(el, '.zstat');
+    qa(el, '.zone').forEach((z, i) => {
+      const s0 = t + 1.6 + i * 1.1;
+      anim(q(z, '.zname'), s0, .4, 'fade'); anim(q(z, '.zbar'), s0, .8, 'growY');
+      anim(q(z, '.zrate'), s0, .4, 'fade'); anim(q(z, '.count'), s0, 1.2, 'count'); anim(zs[i], s0 + .5, .4, 'up');
+    });
+  },
+  hbars(s) {
+    const dark = s.theme !== 'light';
+    const colr = (c) => dark && c === 'strengthblue' ? cv('white') : cv(c || 'trustturquoise');
+    const [el, t] = scene(`<section class="scene ${dark ? 'dark' : 'light'}">${mark}
+      ${s.eyebrow ? `<div class="eyebrow">${s.eyebrow}</div>` : ''}
+      <div class="title">${s.title}</div>
+      <div class="rows">${s.rows.map(r => `<div class="mrow"><div class="mlab">${r.label.replace(/\n/g, '<br>')}</div><div class="mtrack">
+        <div class="mbar" style="width:${num(r.value) / s.x_max * 78}%;background:${colr(r.color)}"></div>
+        <div class="mval" style="left:calc(${num(r.value) / s.x_max * 78}% + 1.6vmin)">${r.value}${r.change ? `<em>${r.change}</em>` : ''}</div></div></div>`).join('')}</div>
+      ${s.punch ? `<div class="punch">${s.punch.pre || ''} <b>${s.punch.value}</b> ${s.punch.post || ''}</div>` : ''}
+      <div class="foot">${s.foot || ''}</div></section>`, 3.2 + .5 * s.rows.length + (s.punch ? 1.2 : 0));
+    anim(q(el, '.eyebrow'), t + .2, .4, 'up'); anim(q(el, '.title'), t + .3, .4, 'up'); anim(q(el, '.foot'), t + .4, .4, 'fade');
+    qa(el, '.mrow').forEach((r, i) => { const s0 = t + .6 + i * .5; anim(q(r, '.mlab'), s0, .4, 'fade'); anim(q(r, '.mbar'), s0, .6, 'growX'); anim(q(r, '.mval'), s0 + .4, .4, 'fade'); });
+    anim(q(el, '.punch'), t + 1.0 + .5 * s.rows.length + .4, .4, 'up');
+  },
+  vs(s) {
+    const smax = s.scale_max || Math.max(num(s.a.value), num(s.b.value)) * 1.15;
+    const col = (arm, c) => `<div class="col"><div class="cval">${count(arm.value)}</div><div class="cbar" style="background:${cv(c)};height:${Math.max(num(arm.value) / smax * 30, .6)}vmin"></div><div class="clab">${arm.label.replace(/\n/g, '<br>')}</div></div>`;
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="title">${s.title}</div><div class="sub">${s.subtitle || ''}</div>
+      <div class="cols">${col(s.a, 'healthygreen')}<div class="vsword">vs</div>${col(s.b, 'trustturquoise')}</div>
+      <div class="foot" style="text-align:center">${s.foot || ''}</div></section>`, 4.8);
+    anim(q(el, '.title'), t + .2, .4, 'up'); anim(q(el, '.sub'), t + .4, .4, 'fade'); anim(q(el, '.foot'), t + .6, .4, 'fade');
+    qa(el, '.col').forEach((c, i) => { const s0 = t + .8 + i * .9; anim(q(c, '.cbar'), s0, .8, 'growY'); anim(q(c, '.cval'), s0, .4, 'fade'); anim(q(c, '.count'), s0, 1.4, 'count'); anim(q(c, '.clab'), s0, .4, 'fade'); });
+    anim(q(el, '.vsword'), t + 1.2, .4, 'fade');
+  },
+  steps(s) {
+    const smax = s.scale_max || Math.max(...s.steps.map(x => num(x.value))) * (s.callout ? 1.45 : 1.15);
+    const shades = ['seafoam', 'trustturquoise', 'strengthblue', 'strengthblue'];
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="title">${s.title}</div><div class="sub">${s.subtitle || ''}</div>
+      ${s.callout ? `<div class="scallout"><div class="v">${s.callout.value}</div><div class="c">${s.callout.caption}</div></div>` : ''}
+      <div class="cols">${s.steps.map((x, i) => `<div class="col"><div class="cval">${count(x.value)}</div><div class="cbar" style="background:${cv(shades[Math.min(i, 3)])};height:${Math.max(num(x.value) / smax * 30, .6)}vmin"></div><div class="clab">${x.label.replace(/\n/g, '<br>')}</div></div>`).join('')}</div>
+      <div class="foot" style="text-align:center">${s.foot || ''}</div></section>`, 3.4 + .7 * s.steps.length);
+    anim(q(el, '.title'), t + .2, .4, 'up'); anim(q(el, '.sub'), t + .4, .4, 'fade'); anim(q(el, '.foot'), t + .6, .4, 'fade');
+    qa(el, '.col').forEach((c, i) => { const s0 = t + .8 + i * .7; anim(q(c, '.cbar'), s0, .7, 'growY'); anim(q(c, '.cval'), s0, .4, 'fade'); anim(q(c, '.count'), s0, 1.2, 'count'); anim(q(c, '.clab'), s0, .4, 'fade'); });
+    anim(q(el, '.scallout'), t + 1.0 + .7 * s.steps.length, .4, 'up');
+  },
+  citation(s) {
+    const [el, t] = scene(`<section class="scene light">${mark}
+      <div class="eyebrow">Reference for this study</div>
+      <div class="ctitle">${s.paper_title}</div>
+      <div class="cauth">${s.authors}</div>
+      <div><span class="cnote">${s.note}</span></div>
+      <div class="foot">The Advita multicenter Axis research group efforts make these generalizable findings possible.</div></section>`, 3.4);
+    anim(q(el, '.eyebrow'), t + .2, .4, 'up'); anim(q(el, '.ctitle'), t + .4, .4, 'up');
+    anim(q(el, '.cauth'), t + .7, .4, 'fade'); anim(q(el, '.cnote'), t + 1.0, .4, 'up'); anim(q(el, '.foot'), t + 1.2, .4, 'fade');
+  },
+};
+D.scenes.forEach(s => B[s.type](s));
+
+/* Deterministic renderer: renderAt(t) draws the exact frame for time t */
+const clamp = (x) => Math.max(0, Math.min(1, x)), ease = (p) => 1 - Math.pow(1 - p, 3);
+const fmt = (v, src) => {
+  const dec = (src.split('.')[1] || '').length, s = v.toFixed(dec);
+  const out = src.includes(',') ? Number(s).toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec}) : s;
+  return src.startsWith('−') ? out.replace('-', '−') : out;
+};
+const vmin = Math.min(innerWidth, innerHeight) / 100;
+window.DURATION = T;
+window.SCENES = S.map(x => [x[1], x[2]]);
+window.renderAt = (t) => {
+  for (const [el, s0, s1] of S) {
+    const fi = s0 === 0 ? 1 : ease(clamp((t - s0) / .4));
+    const fo = s1 >= T ? 1 : 1 - ease(clamp((t - (s1 - .4)) / .4));
+    el.style.opacity = (t >= s0 && t < s1 + .01) ? Math.min(fi, fo) : 0;
+  }
+  for (const [el, s, dur, type] of A) {
+    const p = ease(clamp((t - s) / dur));
+    if (type === 'fade') el.style.opacity = p;
+    else if (type === 'up') { el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * 3 * vmin}px)`; }
+    else if (type === 'growY') el.style.transform = `scaleY(${p})`;
+    else if (type === 'growX') el.style.transform = `scaleX(${p})`;
+    else if (type === 'count') { const src = el.dataset.final; el.textContent = p >= 1 ? src : fmt(num(src) * p, src); }
+  }
+};
+renderAt(0);
+window.READY = document.fonts.ready.then(() => true);
+if (!/[?&]capture/.test(location.search)) {
+  const t0 = performance.now();
+  const loop = (now) => { renderAt(((now - t0) / 1000) % T); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+}
+</script>
+</body>
+</html>

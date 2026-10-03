@@ -1,0 +1,704 @@
+{
+ "slug": "instability-risk-score",
+ "status": "draft_internal_review",
+ "source": {
+  "file": "Instability Risk Score - Clinical Relevant Thresholds Manuscript.docx",
+  "text": "source.md",
+  "kind": "manuscript (unpublished, no journal or DOI yet)"
+ },
+ "page_name": "Instability Risk Score ORbit",
+ "title": "A CT-Based Score to Identify rTSA Patients Most at Risk for Instability",
+ "paper_title": "Establishing Clinically Relevant Risk Thresholds for Instability with the Equinoxe Reverse Shoulder Using a Novel Radiomic Based Risk Metric",
+ "authors": "Elwell J, Rajabzadeh-Oghaz H, Spangenberg G, Aibinder WR, Schoch B, Gobbato B, Trenhaile SW, Singh A, Erickson J, Simovitch R, Roche CP",
+ "tags": [
+  "Complications",
+  "rTSA Outcomes",
+  "Technology"
+ ],
+ "definitions": [
+  "0",
+  "0.3",
+  "0.6",
+  "1",
+  "13",
+  "30"
+ ],
+ "metrics": [
+  {
+   "id": "n_clinical",
+   "value": "14,906",
+   "kind": "count",
+   "section": "Abstract / Methods",
+   "quote": "a non-image clinical dataset of 14,906 patients"
+  },
+  {
+   "id": "n_ct",
+   "value": "6,264",
+   "kind": "count",
+   "section": "Abstract / Methods",
+   "quote": "pre-operative CT-image dataset of 6,264 patients"
+  },
+  {
+   "id": "n_combined",
+   "value": "6,104",
+   "kind": "count",
+   "section": "Results",
+   "quote": "79 of 6,104 primary rTSA patients experienced instability for a 1.29% rate"
+  },
+  {
+   "id": "n_sites",
+   "value": "47",
+   "kind": "count",
+   "section": "Methods",
+   "quote": "Data was collected at 47 clinical sites in the US and Europe"
+  },
+  {
+   "id": "rate_overall",
+   "value": "1.59%",
+   "kind": "rate",
+   "section": "Abstract / Results",
+   "quote": "Instability occurred in 1.59% of 14,906 rTSA patients"
+  },
+  {
+   "id": "rate_female",
+   "value": "0.73%",
+   "kind": "rate",
+   "section": "Results",
+   "quote": "for a 1.59% rate (Female=0.73%, Male=2.80%)"
+  },
+  {
+   "id": "rate_male",
+   "value": "2.80%",
+   "kind": "rate",
+   "section": "Results",
+   "quote": "for a 1.59% rate (Female=0.73%, Male=2.80%)"
+  },
+  {
+   "id": "share_zero_rf",
+   "value": "2.1%",
+   "kind": "proportion",
+   "section": "Abstract / Results",
+   "quote": "only 2.1% of patients had no risk factors and 49.0% of patients had ≥5 risk factors"
+  },
+  {
+   "id": "share_ge5_rf",
+   "value": "49.0%",
+   "kind": "proportion",
+   "section": "Abstract / Results",
+   "quote": "only 2.1% of patients had no risk factors and 49.0% of patients had ≥5 risk factors"
+  },
+  {
+   "id": "rate_ge5_rf",
+   "value": "2.5%",
+   "kind": "rate",
+   "section": "Results",
+   "quote": "49.0% of patients had ≥5 instability risk factors and those patients had a 2.5% instability rate"
+  },
+  {
+   "id": "rate_1rf",
+   "value": "0%",
+   "kind": "rate",
+   "section": "Abstract",
+   "quote": "from 0% for 1 risk factor to 16.67% for ≥13 risk factors"
+  },
+  {
+   "id": "rate_13rf",
+   "value": "16.67%",
+   "kind": "rate",
+   "section": "Abstract",
+   "quote": "from 0% for 1 risk factor to 16.67% for ≥13 risk factors"
+  },
+  {
+   "id": "count_rf",
+   "value": "17",
+   "kind": "count",
+   "section": "Results",
+   "quote": "Analyzing the combined dataset for instability using the 17 identified risk factors"
+  },
+  {
+   "id": "count_radiomic",
+   "value": "7",
+   "kind": "count",
+   "section": "Abstract",
+   "quote": "Seventeen instability risk factors were identified, including 7 newly identified radiomic based risk factors"
+  },
+  {
+   "id": "low_or",
+   "value": "0.09",
+   "kind": "ratio",
+   "section": "Abstract",
+   "quote": "a low instability risk was defined by a score <0.3 (0.09 odds ratio; 0.2% rate)"
+  },
+  {
+   "id": "low_rate",
+   "value": "0.2%",
+   "kind": "rate",
+   "section": "Abstract",
+   "quote": "a low instability risk was defined by a score <0.3 (0.09 odds ratio; 0.2% rate)"
+  },
+  {
+   "id": "mod_or",
+   "value": "0.86",
+   "kind": "ratio",
+   "section": "Abstract",
+   "quote": "a moderate instability risk was defined by a score between 0.3 and 0.6 (0.86 odds ratio; 1.17% rate)"
+  },
+  {
+   "id": "mod_rate",
+   "value": "1.17%",
+   "kind": "rate",
+   "section": "Abstract",
+   "quote": "a moderate instability risk was defined by a score between 0.3 and 0.6 (0.86 odds ratio; 1.17% rate)"
+  },
+  {
+   "id": "high_or",
+   "value": "9.08",
+   "kind": "ratio",
+   "section": "Abstract",
+   "quote": "a high instability risk was defined by a score >0.6 (9.08 odds ratio; 5.7% rate)"
+  },
+  {
+   "id": "high_rate",
+   "value": "5.7%",
+   "kind": "rate",
+   "section": "Abstract",
+   "quote": "a high instability risk was defined by a score >0.6 (9.08 odds ratio; 5.7% rate)"
+  },
+  {
+   "id": "low_share",
+   "value": "49.7%",
+   "kind": "proportion",
+   "section": "Conclusion",
+   "quote": "<0.3 defined the 49.7% of patients with the lowest risk"
+  },
+  {
+   "id": "mod_share",
+   "value": "37.3%",
+   "kind": "proportion",
+   "section": "Conclusion",
+   "quote": "between 0.3 to 0.6 defined the 37.3% of patients with moderate risk"
+  },
+  {
+   "id": "high_share",
+   "value": "13.0%",
+   "kind": "proportion",
+   "section": "Conclusion",
+   "quote": ">0.6 defined the 13.0% of patients with the highest risk for instability"
+  },
+  {
+   "id": "mod_range_low",
+   "value": "62.7%",
+   "kind": "change",
+   "section": "Abstract",
+   "quote": "were associated with a 62.7% to 68.4% decrease in odds ratio for instability"
+  },
+  {
+   "id": "mod_range_high",
+   "value": "68.4%",
+   "kind": "change",
+   "section": "Abstract",
+   "quote": "were associated with a 62.7% to 68.4% decrease in odds ratio for instability"
+  },
+  {
+   "id": "t5_high",
+   "value": "9.08",
+   "kind": "ratio",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 | 5.7% (44 of 777) | 9.08 [5.78 – 14.24]"
+  },
+  {
+   "id": "t5_subscap",
+   "value": "3.74",
+   "kind": "ratio",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & Subscapularis Repaired | 4.0% (16 of 399) | 3.74 [2.14 – 6.54] | -58.8%"
+  },
+  {
+   "id": "t5_gps_subscap",
+   "value": "3.39",
+   "kind": "ratio",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & GPS Navigation Used & Subscapularis Repaired | 3.8% (13 of 344) | 3.39 [1.85 – 6.21] | -62.7%"
+  },
+  {
+   "id": "t5_subscap_bmi",
+   "value": "2.94",
+   "kind": "ratio",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & Subscapularis Repaired & BMI <30 | 3.5% (7 of 200) | 2.94 [1.33 – 6.47] | -67.6%"
+  },
+  {
+   "id": "t5_all3",
+   "value": "2.87",
+   "kind": "ratio",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & GPS Navigation Used & Subscapularis Repaired & BMI <30 | 3.5% (6 of 174) | 2.87 [1.23 – 6.68] | -68.4%"
+  },
+  {
+   "id": "fu_clinical",
+   "value": "33.8",
+   "kind": "duration_months",
+   "section": "Discussion (limitations)",
+   "quote": "the average follow-up of the clinical dataset was 33.8 months"
+  },
+  {
+   "id": "fu_ct",
+   "value": "21.9",
+   "kind": "duration_months",
+   "section": "Discussion (limitations)",
+   "quote": "the average follow-up of the CT image dataset was 21.9 months"
+  },
+  {
+   "id": "c_subscap",
+   "value": "-58.8%",
+   "kind": "change",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & Subscapularis Repaired | 4.0% (16 of 399) | 3.74 [2.14 – 6.54] | -58.8%"
+  },
+  {
+   "id": "c_gps_subscap",
+   "value": "-62.7%",
+   "kind": "change",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & GPS Navigation Used & Subscapularis Repaired | 3.8% (13 of 344) | 3.39 [1.85 – 6.21] | -62.7%"
+  },
+  {
+   "id": "c_subscap_bmi",
+   "value": "-67.6%",
+   "kind": "change",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & Subscapularis Repaired & BMI <30 | 3.5% (7 of 200) | 2.94 [1.33 – 6.47] | -67.6%"
+  },
+  {
+   "id": "c_all3",
+   "value": "-68.4%",
+   "kind": "change",
+   "section": "Table 5",
+   "quote": "Instability Risk Score >0.6 & GPS Navigation Used & Subscapularis Repaired & BMI <30 | 3.5% (6 of 174) | 2.87 [1.23 – 6.68] | -68.4%"
+  }
+ ],
+ "tables": {
+  "accumulation": {
+   "section": "Table 3",
+   "note": "Instability rate (%) by number of accumulated risk factors, combined dataset (n=6,104).",
+   "rows": [
+    {
+     "label": "0",
+     "value": "0.00",
+     "quote": "0 (2.1%) | 128 (128, NA) | 0 (0, NA) | 0.16 (0.16, NA) | 0.00"
+    },
+    {
+     "label": "1",
+     "value": "0.00",
+     "quote": "1 (7.4%) | 452 (444, 8) | 0 (0, 0) | 0.20 (0.20, 0.17) | 0.00"
+    },
+    {
+     "label": "2",
+     "value": "0.13",
+     "quote": "2 (12.8%) | 783 (730, 53) | 1 (1, 0) | 0.22 (0.23, 0.20) | 0.13"
+    },
+    {
+     "label": "3",
+     "value": "0.23",
+     "quote": "3 (14.4%) | 881 (698, 183) | 2 (1, 1) | 0.26 (0.26, 0.26) | 0.23"
+    },
+    {
+     "label": "4",
+     "value": "0.11",
+     "quote": "4 (14.3%) | 871 (580, 291) | 1 (1, 0) | 0.30 (0.31, 0.29) | 0.11"
+    },
+    {
+     "label": "5",
+     "value": "1.22",
+     "quote": "5 (13.5%) | 822 (389, 433) | 10 (5, 5) | 0.34 (0.36, 0.32) | 1.22"
+    },
+    {
+     "label": "6",
+     "value": "1.52",
+     "quote": "6 (10.8%) | 657 (198, 459) | 10 (4, 6) | 0.40 (0.42, 0.39) | 1.52"
+    },
+    {
+     "label": "7",
+     "value": "1.62",
+     "quote": "7 (9.1%) | 555 (116, 439) | 9 (2, 7) | 0.44 (0.49, 0.43) | 1.62"
+    },
+    {
+     "label": "8",
+     "value": "2.94",
+     "quote": "8 (6.7%) | 408 (37, 371) | 12 (1, 11) | 0.47 (0.53, 0.47) | 2.94"
+    },
+    {
+     "label": "9",
+     "value": "3.80",
+     "quote": "9 (4.3%) | 263 (19, 244) | 10 (1, 9) | 0.52 (0.55, 0.52) | 3.80"
+    },
+    {
+     "label": "10",
+     "value": "5.15",
+     "quote": "10 (2.2%) | 136 (5, 131) | 7 (1, 6) | 0.60 (0.68, 0.60) | 5.15"
+    },
+    {
+     "label": "11",
+     "value": "8.75",
+     "quote": "11 (1.3%) | 80 (1, 79) | 7 (0, 7) | 0.65 (0.74, 0.65) | 8.75"
+    },
+    {
+     "label": "12",
+     "value": "13.64",
+     "quote": "12 (0.7%) | 44 (0, 44) | 6 (0, 6) | 0.69 (NA, 0.69) | 13.64"
+    },
+    {
+     "label": "13+",
+     "value": "16.67",
+     "quote": "13 or more (0.4%) | 24 (0, 24) | 4 (0, 4) | 0.72 (NA, 0.72) | 16.67"
+    }
+   ]
+  }
+ },
+ "content": {
+  "study_question": "Can a CT-based radiomic risk score identify which reverse shoulder patients are most at risk for instability?",
+  "story": [
+   "Instability is the most common complication and reason for revision after reverse total shoulder arthroplasty (rTSA). Many risk factors are known, but most patients carry several of them at once, so it is hard to tell who is truly at risk.",
+   "Elwell, Roche and colleagues analyzed {n_clinical} primary rTSA patients from {n_sites} sites in the Equinoxe multicenter database, including pre-operative CT scans from {n_ct} patients. An automated machine-learning segmentation measured the shape of each rotator cuff muscle and a bone-based instability risk score. The team then measured how risk builds as factors accumulate, and set score thresholds that sort patients into low, moderate and high risk before surgery."
+  ],
+  "key_findings": [
+   {
+    "label": "Instability is rare overall",
+    "text": "Instability occurred in {rate_overall} of {n_clinical} patients, and was more common in men ({rate_male}) than in women ({rate_female})."
+   },
+   {
+    "label": "Almost everyone carries risk",
+    "text": "Only {share_zero_rf} of patients had no risk factors and {share_ge5_rf} had five or more. The instability rate climbed from {rate_1rf} with one risk factor to {rate_13rf} with 13 or more."
+   },
+   {
+    "label": "Seventeen risk factors, seven of them new",
+    "text": "Of the {count_rf} risk factors, {count_radiomic} come from the pre-operative CT: the shape of the supraspinatus, subscapularis and teres minor, plus the instability risk score. These are the first radiomic risk factors reported for instability after rTSA."
+   },
+   {
+    "label": "Three clear thresholds",
+    "text": "A score below 0.3 marked low risk ({low_rate} rate, odds ratio {low_or}). A score of 0.3 to 0.6 marked moderate risk ({mod_rate}, odds ratio {mod_or}). A score above 0.6 marked high risk ({high_rate}, odds ratio {high_or})."
+   },
+   {
+    "label": "What surgeons can change",
+    "text": "In high-risk patients, subscapularis repair, GPS navigation and a BMI of 30 or less were associated with {mod_range_low} to {mod_range_high} lower odds of instability."
+   }
+  ],
+  "clinical_context": "The risk score turns a routine pre-operative CT into a low, moderate or high instability rating. For high-risk patients, surgeons can focus on the factors they control: repair the subscapularis whenever possible, use navigation, and address BMI. A low score can reassure surgeon and patient, even when other risk factors are present.",
+  "limitations": "These findings are limited by short average follow-up ({fu_clinical} months clinical, {fu_ct} months CT), possible confounding of implant choices, and internal validation only. The thresholds still need external validation.",
+  "reference": "Elwell J, Rajabzadeh-Oghaz H, Spangenberg G, Aibinder WR, Schoch B, Gobbato B, Trenhaile SW, Singh A, Erickson J, Simovitch R, Roche CP. Establishing Clinically Relevant Risk Thresholds for Instability with the Equinoxe Reverse Shoulder Using a Novel Radiomic Based Risk Metric. Manuscript in preparation; journal and DOI pending."
+ },
+ "figure": {
+  "file": "media/image1.png",
+  "alt": "Three 3D CT reconstructions of the shoulder showing the supraspinatus muscle with low, median and high elongation",
+  "caption": "What the CT measures. Supraspinatus elongation in three patients with low (left), median (middle) and high (right) values. Automated segmentation measures the shape of each rotator cuff muscle. Manuscript Figure 1."
+ },
+ "icon_list": {
+  "title": "The seven radiomic risk factors",
+  "quote": "supraspinatus elongation >0.317, supraspinatus flatness >0.191, supraspinatus volume >53cm3, subscapularis major axis length >132mm, subscapularis surface-to-volume ratio <0.182, teres minor flatness <0.153, and the instability risk score >0.6",
+  "items": [
+   {
+    "icon": "elongation",
+    "label": "Supraspinatus elongation",
+    "detail": ">0.317"
+   },
+   {
+    "icon": "flatness",
+    "label": "Supraspinatus flatness",
+    "detail": ">0.191"
+   },
+   {
+    "icon": "volume",
+    "label": "Supraspinatus volume",
+    "detail": ">53 cm³"
+   },
+   {
+    "icon": "axis",
+    "label": "Subscapularis major axis length",
+    "detail": ">132 mm"
+   },
+   {
+    "icon": "surface",
+    "label": "Subscapularis surface-to-volume ratio",
+    "detail": "<0.182"
+   },
+   {
+    "icon": "flatness",
+    "label": "Teres minor flatness",
+    "detail": "<0.153"
+   },
+   {
+    "icon": "score",
+    "label": "Instability risk score",
+    "detail": ">0.6"
+   }
+  ]
+ },
+ "visuals": [
+  {
+   "id": "threshold",
+   "type": "zones",
+   "after": "key_findings",
+   "title": "Three clear thresholds",
+   "subtitle": "Instability rate, odds ratio and share of patients for each risk score zone (n = {n_combined})",
+   "domain": [
+    0,
+    1
+   ],
+   "ticks": [
+    0,
+    0.3,
+    0.6,
+    1
+   ],
+   "scale_max": 6,
+   "grid": [
+    2,
+    4,
+    6
+   ],
+   "unit": "%",
+   "bar_label": "Instability rate",
+   "axis_label": "Instability risk score",
+   "zones": [
+    {
+     "label": "Low risk",
+     "from": 0,
+     "to": 0.3,
+     "color": "freshgreen",
+     "value": "{low_rate}",
+     "stats": [
+      "Odds ratio {low_or}",
+      "{low_share} of patients"
+     ]
+    },
+    {
+     "label": "Moderate risk",
+     "from": 0.3,
+     "to": 0.6,
+     "color": "trustturquoise",
+     "value": "{mod_rate}",
+     "stats": [
+      "Odds ratio {mod_or}",
+      "{mod_share} of patients"
+     ]
+    },
+    {
+     "label": "High risk",
+     "from": 0.6,
+     "to": 1,
+     "color": "strengthblue",
+     "value": "{high_rate}",
+     "stats": [
+      "Odds ratio {high_or}",
+      "{high_share} of patients"
+     ],
+     "accent": true
+    }
+   ]
+  },
+  {
+   "id": "modifiable",
+   "type": "hbars",
+   "after": "clinical_context",
+   "title": "What surgeons can change in high-risk patients",
+   "subtitle": "Odds ratio for instability with a risk score above 0.6, alone and with modifiable factors addressed (Table 5)",
+   "x_max": 10,
+   "grid": [
+    2,
+    4,
+    6,
+    8,
+    10
+   ],
+   "x_label": "Odds ratio for instability",
+   "rows": [
+    {
+     "label": "Risk score >0.6",
+     "value": "{t5_high}",
+     "color": "strengthblue"
+    },
+    {
+     "label": "+ Subscapularis repair",
+     "value": "{t5_subscap}",
+     "change": "{c_subscap}"
+    },
+    {
+     "label": "+ Subscapularis repair\n+ GPS navigation",
+     "value": "{t5_gps_subscap}",
+     "change": "{c_gps_subscap}"
+    },
+    {
+     "label": "+ Subscapularis repair\n+ BMI ≤30",
+     "value": "{t5_subscap_bmi}",
+     "change": "{c_subscap_bmi}"
+    },
+    {
+     "label": "+ All three",
+     "value": "{t5_all3}",
+     "change": "{c_all3}",
+     "color": "healthygreen"
+    }
+   ]
+  },
+  {
+   "id": "accumulation",
+   "type": "bars",
+   "table": "accumulation",
+   "title": "Risk builds as factors accumulate",
+   "subtitle": "Instability rate by number of risk factors · combined dataset, n = {n_combined}",
+   "y_max": 18,
+   "grid": [
+    5,
+    10,
+    15
+   ],
+   "unit": "%",
+   "highlight_from": 5,
+   "label_every": [
+    "0",
+    "5",
+    "10",
+    "13+"
+   ],
+   "x_label": "Number of risk factors"
+  }
+ ],
+ "sidebar": [
+  {
+   "type": "counter",
+   "value": "{rate_overall}",
+   "caption": "instability rate among {n_clinical} primary rTSA patients",
+   "color": "freshgreen"
+  },
+  {
+   "type": "chart",
+   "visual": "accumulation",
+   "title": "Risk builds as factors accumulate",
+   "caption": "Instability rate by number of risk factors, from {rate_1rf} with one factor to {rate_13rf} with 13 or more (n = {n_combined})."
+  },
+  {
+   "type": "counter",
+   "value": "{high_or}x",
+   "caption": "odds ratio for instability when the risk score is above 0.6",
+   "color": "trustturquoise"
+  },
+  {
+   "type": "counter",
+   "value": "{mod_range_high}",
+   "pre": "Up to",
+   "caption": "lower odds in high-risk patients when subscapularis repair, navigation and BMI are addressed",
+   "color": "freshgreen"
+  }
+ ],
+ "video": {
+  "question_lines": [
+   "Can a CT-based radiomic risk score identify",
+   "which reverse shoulder patients are",
+   "most at risk for instability?"
+  ],
+  "topic": "Instability after reverse total shoulder arthroplasty (rTSA)",
+  "population": {
+   "eyebrow": "Equinoxe multicenter database · {n_sites} sites",
+   "big": {
+    "value": "{n_clinical}",
+    "caption": "primary rTSA patients analyzed"
+   },
+   "small": [
+    {
+     "value": "{n_ct}",
+     "caption": "pre-operative CT scans measured by automated segmentation"
+    },
+    {
+     "value": "{rate_overall}",
+     "caption": "had instability after rTSA",
+     "accent": true
+    }
+   ]
+  },
+  "scenes": [
+   "accumulation",
+   "threshold",
+   "modifiable"
+  ],
+  "overrides": {
+   "accumulation": {
+    "foot": "Number of accumulated risk factors · source: manuscript Table 3",
+    "callouts": [
+     {
+      "row": 1,
+      "text": "{rate_1rf}",
+      "sub": "with 1 risk factor"
+     },
+     {
+      "row": 13,
+      "text": "{rate_13rf}",
+      "sub": "with 13 or more"
+     }
+    ]
+   },
+   "threshold": {
+    "subtitle": "Instability rate by instability risk score zone · n = {n_combined}",
+    "foot": "Instability risk score, 0 to 1, from pre-operative CT"
+   },
+   "modifiable": {
+    "eyebrow": "High-risk patients · score above 0.6",
+    "title": "What surgeons can change",
+    "rows": [
+     {
+      "label": "Risk score above 0.6",
+      "value": "{t5_high}",
+      "color": "strengthblue"
+     },
+     {
+      "label": "+ Subscapularis repair",
+      "value": "{t5_subscap}",
+      "change": "{c_subscap}"
+     },
+     {
+      "label": "+ Subscapularis repair\n+ GPS navigation",
+      "value": "{t5_gps_subscap}",
+      "change": "{c_gps_subscap}"
+     },
+     {
+      "label": "+ Subscapularis repair\n+ BMI ≤30",
+      "value": "{t5_subscap_bmi}",
+      "change": "{c_subscap_bmi}"
+     },
+     {
+      "label": "+ All three",
+      "value": "{t5_all3}",
+      "change": "{c_all3}",
+      "color": "freshgreen"
+     }
+    ],
+    "punch": {
+     "pre": "Up to",
+     "value": "{mod_range_high}",
+     "post": "lower odds of instability"
+    },
+    "foot": "Odds ratio for instability · source: manuscript Table 5"
+   }
+  },
+  "note": "Manuscript in preparation · draft for internal review"
+ },
+ "cards": {
+  "wide": {
+   "eyebrow": "Instability after rTSA",
+   "foot": "{n_clinical} primary rTSA patients · {n_sites} sites · draft for internal review",
+   "visual": "threshold",
+   "visual_title": "Instability rate by risk score",
+   "visual_subtitle": "Instability risk score from pre-operative CT, 0 to 1"
+  },
+  "square": {
+   "eyebrow": "Instability after rTSA · {n_clinical} patients",
+   "value": "{high_or}x",
+   "caption": "higher odds of instability when the CT-based risk score is above 0.6",
+   "foot": "Manuscript in preparation · draft for internal review"
+  }
+ },
+ "hero_metric_ids": [
+  "rate_overall",
+  "high_or",
+  "mod_range_high"
+ ]
+}

@@ -1,0 +1,119 @@
+{
+  "$meta": {
+    "source": "Extraído do HTML/CSS inline servido em advita.com (tema Impreza/UpSolution 8.34.1 + WPBakery), páginas /axis/* e /axis-research/, em 2026-10-02 via headless browser (gstack browse). Valores são os literais do bloco :root do tema e das classes us_custom_* geradas pelo page builder.",
+    "verified_pages": [
+      "https://advita.com/axis-research/",
+      "https://advita.com/axis/which-patients-are-most-at-risk-for-glenoid-loosening-and-rotator-cuff-tears-after-atsa/",
+      "https://advita.com/axis/augments-vs-bone-grafting-for-glenoid-deformity/",
+      "https://advita.com/axis/is-modern-shoulder-technology-worth-the-cost/",
+      "https://advita.com/axis/identifying-rtsa-patients-most-at-risk-for-acromial-and-scapular-fracture/",
+      "https://advita.com/axis/restoring-function-and-stability-with-humeral-bone-loss/",
+      "https://advita.com/axis/does-gps-computer-navigation-improve-clinical-outcomes/"
+    ]
+  },
+  "color": {
+    "brand": {
+      "healthygreen":   { "value": "#39B54A", "css": "--color-healthygreen", "role": "primary (= --color-content-primary); badges de categoria, borda esquerda dos H2, contadores color_primary, ícones --icon-color" },
+      "freshgreen":     { "value": "#8DC63F", "css": "--color-freshgreen", "role": "número de destaque nos cards (contador), subtítulo 'Risk Factors for Rotator Cuff Tears'; fim do gradiente da progress bar verde" },
+      "trustturquoise": { "value": "#00A79D", "css": "--color-trustturquoise", "role": "segundo acento: odds ratio combinado, lado 'Bone Graft' nos comparativos vs, subtítulo 'Risk Factors for Glenoid Loosening'; início do gradiente da progress bar turquesa" },
+      "seafoam":        { "value": "#74C7A7", "css": "--color-seafoam", "role": "fim do gradiente da progress bar turquesa" },
+      "darkgreen":      { "value": "#277e33", "css": "--color-darkgreen", "role": "eyebrow uppercase no hub (.us_custom_f5abdf43)" },
+      "strengthblue":   { "value": "#003C4C", "css": "--color-strengthblue", "role": "fundo dos cards da sidebar; cor de heading (--color-content-heading = #003c4c); footer" },
+      "balanceblue":    { "value": "#00596D", "css": "--color-balanceblue", "role": "definido no :root, nao observado em uso nas paginas Axis" },
+      "youthfulorange": { "value": "#FEBE10", "css": "--color-youthfulorange", "role": "circulo '10.1x' absoluto na pagina de fratura (unico uso de cor quente)" }
+    },
+    "semantic": {
+      "content-bg":        { "value": "#fff",    "css": "--color-content-bg" },
+      "content-bg-alt":    { "value": "#f2f3f5", "css": "--color-content-bg-alt", "role": "secoes alternadas, fundo da barra de progresso, header top" },
+      "content-border":    { "value": "#e1e5e8", "css": "--color-content-border" },
+      "content-heading":   { "value": "#003c4c", "css": "--color-content-heading" },
+      "content-text":      { "value": "#000607", "css": "--color-content-text" },
+      "content-link":      { "value": "#00857D", "css": "--color-content-link", "role": "links e eyebrow do hub ('ADVANCING OUTCOMES...')" },
+      "content-link-hover":{ "value": "#39B54A", "css": "--color-content-link-hover" },
+      "content-primary":   { "value": "#39B54A", "css": "--color-content-primary" },
+      "content-secondary": { "value": "#003C4C", "css": "--color-content-secondary" },
+      "content-faded":     { "value": "#545a66", "css": "--color-content-faded", "role": "data de publicacao, referencia bibliografica, taxonomia 13px" },
+      "content-primary-faded": { "value": "rgba(57, 181, 74, .15)", "css": "--color-content-primary-faded" },
+      "footer-bg":         { "value": "#003C4C", "css": "--color-footer-bg" },
+      "subfooter-bg":      { "value": "#00303c", "css": "--color-subfooter-bg" }
+    },
+    "off_system_observed": [
+      { "value": "#ff0000", "where": "aTSA: setas fa-arrow-alt-up nos 'Risk Factors' (--icon-color:#ff0000). Vermelho puro, fora da paleta." },
+      { "value": "#00adef", "where": "parametro color= do player Vimeo (azul default do Vimeo, nao da marca)." }
+    ]
+  },
+  "typography": {
+    "family": { "body": "\"Open Sans\"", "headings": "\"Open Sans\"", "hub_hero_only": "museo (classe .us_custom_86c6e1ca, H1 do hub 'Advita Axis Shoulder Research Initiative'; nao usado nos artigos)", "icons": "Font Awesome 7 (kit.fontawesome.com) + Font Awesome 5/6 local do Impreza" },
+    "weights_loaded": [400, 600, 700],
+    "google_fonts": "https://fonts.gstatic.com/s/opensans/v44/... (woff2, font-display:swap)",
+    "body":  { "size": "16px", "lineHeight": "25px", "weight": 400, "boldWeight": 600 },
+    "h1":    { "size": "56px", "lineHeight": 1.15, "weight": 600, "letterSpacing": "-0.02em", "marginBottom": "0.4rem" },
+    "h2":    { "size": "36px", "lineHeight": 1.15, "weight": 600, "letterSpacing": "-0.02em", "marginBottom": "1rem" },
+    "h3":    { "size": "30px", "lineHeight": 1.15, "weight": 600, "letterSpacing": "-0.02em" },
+    "h4":    { "size": "26px" }, "h5": { "size": "24px" }, "h6": { "size": "22px" },
+    "roles": {
+      "section_heading_h2": ".us_custom_02f98e1a — color heading #003c4c, weight 600, border-left 5px solid #39B54A, padding-left 1.2em",
+      "counter_value": ".us_custom_92682121 — 3.5rem, weight 700, cor branca por default; var(--color-freshgreen) ou var(--color-trustturquoise) inline; color_primary = #39B54A",
+      "counter_title": "p.w-counter-title — 1rem/1.4 weight 400 (aTSA) ou 1.3rem weight 700 (demais)",
+      "card_subheading_h6": ".us_custom_24c5e566 (#8DC63F) / .us_custom_a5de8918 (#00A79D), text-align center",
+      "iconbox_title": "p.w-iconbox-title 1.3rem bold, branco",
+      "iconbox_text": "16px/18px branco",
+      "pub_date": ".usg_post_date_1 / .us_custom_8889e6af — 13px, #545a66",
+      "taxonomy_badge": ".us_custom_963a5348 — .7rem, 700, uppercase, pill verde #39B54A",
+      "reference": ".us_custom_c4a319b7 — 16px, #545a66",
+      "closing_line": ".us_custom_f8de89a1 — 'The Advita multicenter Axis research group efforts make these generalizable findings possible.' 1.2rem 600 #003c4c centered",
+      "stacked_step_value": "inline 24pt bold; label bold; 'Fracture Rate' regular",
+      "circle_value": "inline 36pt bold dentro de circulo 200px",
+      "progbar_count": ".w-progbar.style_5 .w-progbar-title-count — 3em weight 300 opacity .33"
+    }
+  },
+  "layout": {
+    "site_canvas_width": "1240px",
+    "site_content_width": "1280px (980px em secoes width_custom)",
+    "article_grid": "WPBakery 8/4: vc_col-sm-8 (texto) + vc_col-sm-4 sticky (type_sticky, top 4rem) para os cards de metricas",
+    "section_padding": { "height_small": "2rem (1.5rem mobile)", "height_medium": "4rem (2.5rem/1.5rem em breakpoints menores)" },
+    "separator": { "size_medium": "1.5rem", "size_large": "~3rem", "custom": ".5rem" },
+    "vwrapper_gap": "1rem (--vwrapper-gap)",
+    "hwrapper_gap": "0.5rem (stacked risk) / 1rem (vs comparativo)",
+    "hub_grid": "w-grid type_grid cols_4, imagem ratio 3:2 (400x250), titulo 1.5rem 700, taxonomia 13px uppercase, data 13px"
+  },
+  "radius": {
+    "sidebar_card": "15px (.us_custom_bf6e1bd5 / .us_custom_2fde9325)",
+    "white_card_shadow": "10px + box-shadow 0 10px 50px 0 rgba(0,0,0,.08) (.us_custom_60c15ba5, .us_custom_e8e64acd)",
+    "inputs_buttons": "10px (--inputs-border-radius)",
+    "badge": "pill (50%)",
+    "circle_callout": "50%, 200x200px"
+  },
+  "shadow": { "default": "0 5px 15px rgba(0,0,0,.15) (--box-shadow)", "soft_card": "0 10px 50px 0 rgba(0,0,0,.08)" },
+  "spacing_card": { "padding": "5%", "margin": "2%", "icon_size": "5rem (iconbox) / 12rem (hero icon)" },
+  "motion": {
+    "counter": "w-counter data-duration=2 (count-up 2s ao entrar no viewport; valor real em data-final, HTML estatico mostra 0/0.0)",
+    "progress_bar": "width 0 → valor, transition .8s cubic-bezier(.6,.3,.3,.6)",
+    "stacked_steps": "us_animate_this + animation-name afb (fade from bottom) com delays escalonados .1s / .3s / .4s"
+  },
+  "icons": {
+    "mode": "Font Awesome (classes fa-solid / fa-duotone, via kit.fontawesome.com) + PNGs raster enviados pela midia do WordPress. Zero <svg> inline nas paginas.",
+    "fa_used": ["fa-solid fa-arrow-alt-up (aTSA, vermelho)", "fa-duotone fa-solid fa-box-up (cost)", "fa-duotone fa-solid fa-chart-line-down (cost)", "fa-duotone fa-solid fa-sort-amount-up (cost)", "fa-solid fa-chevron-left (breadcrumb)", "fas fa-envelope / fa-copy / fa-brands facebook, linkedin, twitter, reddit (share)"],
+    "png_used": [
+      "https://advita.com/wp-content/uploads/2025/05/Advita-Ortho-Icon.png (434x504) — logo-icone Advita; usado como icone generico em fracture, humeral, gps e nos 3 passos do stacked risk",
+      "https://advita.com/wp-content/uploads/2026/09/web_IS_Shoulder_Technology_Worth_the_Cost_Icon.png (465x416)",
+      "https://advita.com/wp-content/uploads/2026/09/web_shorter-time_2-tone.png (472x390)",
+      "https://advita.com/wp-content/uploads/2026/09/web_Range-of-motion_Icon.png (310x335)",
+      "https://advita.com/wp-content/uploads/2026/09/Advita-Ortho-Axis-ORbits-Logo-1-300x69.png (logo Axis ORbits)",
+      "https://advita.com/wp-content/uploads/2026/09/Axis-ORbits-Icon-Logo-1.png (100x26, selo nos cards do hub)"
+    ],
+    "hub_card_images": [
+      "web_Advita_Ortho_Axis_Shoulder_Program_aTSA-Outcomes_Complications_Image.jpg",
+      "web_Advita_Ortho_Axis_Shoulder_Program_rTSA-Outcomes_Complications_Image.jpg",
+      "web_Advita_Ortho_Axis_Shoulder_Program_rTSA-Outcomes_Image.jpg",
+      "web_Advita_Ortho_Axis_Shoulder_Program_Technology_Image.jpg"
+    ]
+  },
+  "video": {
+    "host": "Vimeo (player.vimeo.com/video/<id>?color=00adef&portrait=0&byline=0&title=0)",
+    "embedded_in_article": true,
+    "position": "apos Limitations, antes de 'Reference for this study:'",
+    "ids": { "atsa": "1224999700", "fracture": "1225026096", "humeral": "1225033829", "augments": "1225021606", "cost": "1224988002", "gps": "1225029137" },
+    "note": "O mesmo id aparece na pagina /product/<slug>/ (secao 'Axis ORbits Videos' do hub). Ou seja, o video de entrevista JA esta embutido no artigo."
+  }
+}
